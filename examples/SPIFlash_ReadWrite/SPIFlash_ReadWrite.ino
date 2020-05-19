@@ -7,6 +7,7 @@
 // - 'i' print manufacturer/device ID
 // - [0-9] writes a random byte to addresses [0-9] (either 0xAA or 0xBB)
 // Get the SPIFlash library from here: https://github.com/LowPowerLab/SPIFlash
+// Note: if other SPI devices are present, ensure their CS pins are pulled up or set HIGH
 // **********************************************************************************
 // Copyright Felix Rusu, LowPowerLab.com
 // Library and code by Felix Rusu - felix@lowpowerlab.com
@@ -35,8 +36,6 @@
 // Please maintain this license information along with authorship
 // and copyright notices in any redistribution of this code
 // **********************************************************************************
-
-
 #include <SPIFlash.h>    //get it here: https://github.com/LowPowerLab/SPIFlash
 #include <SPI.h>
 
@@ -57,6 +56,7 @@ long lastPeriod = -1;
 // SPI_CS          - CS pin attached to SPI flash chip (8 in case of Moteino)
 // MANUFACTURER_ID - OPTIONAL, 0x1F44 for adesto(ex atmel) 4mbit flash
 //                             0xEF30 for windbond 4mbit flash
+//                             0xEF40 for windbond 64mbit flash
 //////////////////////////////////////////
 SPIFlash flash(FLASH_SS, 0xEF30);
 
